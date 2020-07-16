@@ -2,6 +2,7 @@ package com.example.feedback;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,22 +22,19 @@ class FeedbackController {
     @PostMapping("/feedback/add")
     void add(@RequestBody AddRequest addRequest, HttpServletResponse response) throws IOException {
 
-        // Feedback object coming from the client is supposed to be correct as it is already validated by the client.
+        // Feedback objects coming from the client is supposed to be correct as it is already validated by the client.
         // Nevertheless this server check blocks tainted requests because such requests may if the client is compromised
         // (attack or bug).
+        // In a bigger application, it is worth to setup a central mechanism to handle these cases
         if (!addRequest.isValid()) {
             log.warn("Illegal request : " + addRequest);
             response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
-        LocalDateTime now = LocalDateTime.now();
-        Feedback feedback = new Feedback(now, addRequest.contactType, addRequest.message);
-        feedback.setEmail(addRequest.email);
-        feedback.setName(addRequest.name);
-        feedbackRepository.save(feedback);
+        feedbackRepository.save(addRequest.toFeedback());
     }
 
-    @Data
+    @Setter
     static class AddRequest {
 
         private static final int NAME_MAX_LENGTH = 128;
@@ -54,16 +52,24 @@ class FeedbackController {
         private String message;
 
         boolean isValid() {
-            if (name != null && name.length() > NAME_MAX_LENGTH) {
+            if (name == null || name.length() > NAME_MAX_LENGTH) {
                 return false;
             }
-            if (email != null && email.length() > EMAIL_MAX_LENGTH) {
+            if (email == null || email.length() > EMAIL_MAX_LENGTH) {
                 return false;
             }
-            if (message == null || message.length() > MESSAGE_MAX_LENGTH ) {
+            if (message == null || message.trim().length() == 0 || message.length() > MESSAGE_MAX_LENGTH ) {
                 return false;
             }
             return contactType != null;
+        }
+
+        Feedback toFeedback() {
+            LocalDateTime now = LocalDateTime.now();
+            Feedback feedback = new Feedback(now, contactType, message);
+            feedback.setEmail(email);
+            feedback.setName(name);
+            return feedback;
         }
     }
 

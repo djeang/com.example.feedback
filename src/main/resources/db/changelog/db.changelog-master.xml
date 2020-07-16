@@ -13,8 +13,12 @@
             <column name="submission_date" type="datetime" >
                 <constraints nullable="false"/>
             </column>
-            <column name="name" type="varchar"/>
-            <column name="email" type="varchar"/>
+            <column name="name" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar">
+                <constraints nullable="false"/>
+            </column>
             <column name="contact_type" type="varchar(20)">
                 <constraints nullable="false"/>
             </column>
@@ -28,6 +32,31 @@
         <createIndex tableName="feedback" indexName="contact_type_idx">
             <column name="contact_type"/>
         </createIndex>
+
+        <insert tableName="feedback">
+            <column name="id" value="1"/>
+            <column name="submission_date" value="2015-10-01T15:00:00.0"/>
+            <column name="name" value="John Doe"/>
+            <column name="email" value="johndos@gmail.com"/>
+            <column name="contact_type" value="GENERAL"/>
+            <column name="message" value="This is my first message"/>
+        </insert>
+        <insert tableName="feedback">
+            <column name="id" value="2"/>
+            <column name="submission_date" value="2015-10-02T15:04:45.0"/>
+            <column name="name" value="John Doe"/>
+            <column name="email" value="johndos@gmail.com"/>
+            <column name="contact_type" value="GENERAL"/>
+            <column name="message" value="This is my second firmessage"/>
+        </insert>
+        <insert tableName="feedback">
+            <column name="id" value="3"/>
+            <column name="submission_date" value="2018-10-02T15:04:45.0"/>
+            <column name="name" value="Daisy Shurl"/>
+            <column name="email" value="daysil@gmail.com"/>
+            <column name="contact_type" value="SUPPORT"/>
+            <column name="message" value="Every thing is Ok"/>
+        </insert>
 
     </changeSet>
 

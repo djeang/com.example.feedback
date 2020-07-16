@@ -24,10 +24,10 @@ class Feedback {
     private LocalDateTime submissionDate;  // Store time, using server timezone implicitly
 
     @Setter
-    private String name;
+    private String name = "";
 
     @Setter
-    private String email;
+    private String email = "";
 
     @Enumerated(EnumType.STRING)
     private ContactType contactType;
