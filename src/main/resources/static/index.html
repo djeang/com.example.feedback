@@ -11,6 +11,7 @@
     </head>
     <body>
         <div class="container">
+            <h1>Our feedback</h1>
             <div class="custom-control custom-radio custom-control-inline">
                 <input type="radio" id="general" name="typeRadio" class="custom-control-input" value="GENERAL" checked>
                 <label class="custom-control-label" for="general">General</label>
@@ -25,11 +26,11 @@
             </div>
             <br/>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="asc" name="sortRadio" class="custom-control-input" value="ASC" checked>
+                <input type="radio" id="asc" name="sortRadio" class="custom-control-input" value="asc" checked>
                 <label class="custom-control-label" for="asc">Ascending Sort</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="desc" name="sortRadio" class="custom-control-input" value="DESC">
+                <input type="radio" id="desc" name="sortRadio" class="custom-control-input" value="desc">
                 <label class="custom-control-label" for="desc">Descending Sort</label>
             </div>
             <div class="spinner-border text-muted" id="spinner" hidden></div>
@@ -46,6 +47,7 @@
                 <tbody id="tbody">
                 </tbody>
             </table>
+            <a href="form.html">Add a new Feedback</a>
         </div>
         <script>
             initTable();

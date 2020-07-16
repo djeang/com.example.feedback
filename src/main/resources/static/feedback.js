@@ -75,7 +75,7 @@ function fillTable() {
         }
     }
     const xhr = new XMLHttpRequest();   // new HttpRequest instance
-    const url = "/feedbacks/search/findByContactType?contactType=" + contactType + "&sort=submissionDate&submissionDate.dir=" + dir;
+    const url = "/feedbacks/search/findByContactType?contactType=" + contactType + "&sort=submissionDate," + dir;
     document.getElementById("spinner").style.visibility = 'visible';
     xhr.open("GET", url);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
