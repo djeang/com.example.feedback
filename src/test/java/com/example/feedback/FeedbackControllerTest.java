@@ -24,6 +24,7 @@ public class FeedbackControllerTest {
         addRequest.setContactType(Feedback.ContactType.GENERAL);
         addRequest.setMessage("This is my message");
         addRequest.setEmail("my@email.com");
+        addRequest.setName("");
         assertEquals(200,
                 this.restTemplate.postForEntity(url("/feedback/add"), addRequest, Void.class).getStatusCode().value());
     }

@@ -34,7 +34,7 @@ class FeedbackController {
         feedbackRepository.save(addRequest.toFeedback());
     }
 
-    @Setter
+    @Data
     static class AddRequest {
 
         private static final int NAME_MAX_LENGTH = 128;
