@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="base" author="my.team">
+        <createTable tableName="feedback">
+            <column name="id" autoIncrement="true" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="submission_date" type="datetime" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar"/>
+            <column name="email" type="varchar"/>
+            <column name="contact_type" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="message" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createIndex tableName="feedback" indexName="submission_date_idx">
+            <column name="submission_date"/>
+        </createIndex>
+        <createIndex tableName="feedback" indexName="contact_type_idx">
+            <column name="contact_type"/>
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>
