@@ -3,8 +3,7 @@
 The application runs on springboot backed by an in-memory H2 database. The state is so reset to empty at 
 each application reboot. The database is populated with 3 feedback at start-up.
 
-The client side code is located in *src/main/resources/static*. It does not rely on any framework.
-
+The client side code is located in *src/main/resources/static*. It does not rely on any framework or third party lib.
 
 # How to run the server
 
