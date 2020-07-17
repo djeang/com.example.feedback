@@ -25,6 +25,8 @@ From here you can add one feedback. Once feedback added successfully, a success 
 appears, and the submit button disappears (user is not supposed to enter several feedback in a row).
 
 Note : the corner case consisting in submitting a blank message (one or several spaces) is not handled properly.
+More generally, i didn't put so much effort in UX quality, we can discuss what may be improved for 
+a production grade.
 
 # How to execute tests
 
