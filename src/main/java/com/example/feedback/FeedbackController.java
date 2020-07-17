@@ -2,7 +2,6 @@ package com.example.feedback;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

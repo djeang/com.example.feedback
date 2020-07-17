@@ -81,19 +81,19 @@ function fillTable() {
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.onreadystatechange = function () {
         document.getElementById("spinner").style.visibility = 'hidden';
-        if (xhr.readyState === 4 && xhr.status == 200) {
+        if (xhr.readyState == 4 && xhr.status == 200) {
             const response = JSON.parse(this.responseText);
-            const feedbacks = response._embedded.feedbacks;
-            fillTbody(feedbacks);
+            const feedbackArray = response._embedded.feedbacks;
+            fillTbody(feedbackArray);
         }
     }
     xhr.send();
 }
 
-function fillTbody(feedbacks) {
+function fillTbody(feedbackArray) {
     const tbody = document.getElementById("tbody");
     tbody.innerHTML = '';
-    feedbacks.forEach(feedback => addRow(tbody, feedback));
+    feedbackArray.forEach(feedback => addRow(tbody, feedback));
 }
 
 function addRow(tbody, feedback) {
